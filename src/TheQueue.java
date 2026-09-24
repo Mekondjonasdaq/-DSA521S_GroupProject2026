@@ -35,26 +35,20 @@ public class TheQueue {
 
     // DEQUEUE - Remove student from the FRONT
 
-    void dequeue() {
-
-        // Check 1: Is queue empty?
+    Student dequeue() {
         if (front == -1 && rear == -1) {
             System.out.println("Queue is empty!");
-            return;
+            return null;
         }
-
-        // Show who is served
-        System.out.println("Served: " + queue[front].name);
-
-        // Check 2: Only ONE student?
+        Student served = queue[front];
+        System.out.println("Served: " + served.name);
         if (front == rear) {
             front = -1;
             rear = -1;
-        }
-        // Check 3: More students remain
-        else {
+        } else {
             front = front + 1;
         }
+        return served;
     }
 
 

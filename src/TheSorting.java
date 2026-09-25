@@ -1,8 +1,12 @@
 public class TheSorting {
 
+    // Shared counter for Merge Sort and Quick Sort comparisons
+    static int mergeQuickComparisons = 0;
 
+
+    // ============================================================
     // B1: SELECTION SORT
-
+    // ============================================================
 
     static void selectionSort(int arr[]) {
         int n = arr.length;           // Get array length
@@ -45,9 +49,9 @@ public class TheSorting {
     }
 
 
-
+    // ============================================================
     // B2: INSERTION SORT
-
+    // ============================================================
 
     static void insertionSort(int arr[]) {
         int n = arr.length;           // Get array length
@@ -84,9 +88,9 @@ public class TheSorting {
     }
 
 
-
+    // ============================================================
     // B3: MERGE SORT
-
+    // ============================================================
 
     static void mergeSort(int arr[], int left, int right) {
 
@@ -127,6 +131,7 @@ public class TheSorting {
 
         // Compare elements from left and right, add smaller one
         while (i < n1 && j < n2) {
+            mergeQuickComparisons++;    // Count this comparison
             if (L[i] <= R[j]) {
                 arr[k] = L[i];
                 i++;
@@ -153,9 +158,9 @@ public class TheSorting {
     }
 
 
-
+    // ============================================================
     // B4: QUICK SORT
-
+    // ============================================================
 
     static void quickSort(int arr[], int low, int high) {
 
@@ -179,6 +184,8 @@ public class TheSorting {
         // Compare each element with pivot
         for (int j = low; j < high; j++) {
 
+            mergeQuickComparisons++;    // Count this comparison
+
             // If current element is smaller than pivot
             if (arr[j] < pivot) {
                 i++;
@@ -199,9 +206,9 @@ public class TheSorting {
     }
 
 
-
+    // ============================================================
     // Display array in [a, b, c, ...] format
-
+    // ============================================================
 
     static void display(int arr[]) {
         System.out.print("[");
@@ -215,16 +222,14 @@ public class TheSorting {
     }
 
 
-
+    // ============================================================
     // MAIN - Test all 4 sorts
-
+    // ============================================================
 
     public static void main(String[] args) {
 
-
         // B1: SELECTION SORT
-
-        System.out.println("  B1: SELECTION SORT  ");
+        System.out.println("=== B1: SELECTION SORT ===");
         int arr1[] = {17, 5, 23, 8, 14, 3, 11, 20, 6, 9};
         System.out.print("Original: ");
         display(arr1);
@@ -233,10 +238,8 @@ public class TheSorting {
         display(arr1);
         System.out.println();
 
-
         // B2: INSERTION SORT
-
-        System.out.println(" INSERTION SORT");
+        System.out.println("=== B2: INSERTION SORT ===");
         int arr2[] = {17, 5, 23, 8, 14, 3, 11, 20, 6, 9};
         System.out.print("Original: ");
         display(arr2);
@@ -245,27 +248,27 @@ public class TheSorting {
         display(arr2);
         System.out.println();
 
-
         // B3: MERGE SORT
-
-        System.out.println("B3: MERGE SORT");
+        System.out.println("=== B3: MERGE SORT ===");
         int arr3[] = {17, 5, 23, 8, 14, 3, 11, 20, 6, 9};
         System.out.print("Original: ");
         display(arr3);
+        mergeQuickComparisons = 0;    // Reset counter before sorting
         mergeSort(arr3, 0, arr3.length - 1);
         System.out.print("Sorted:   ");
         display(arr3);
+        System.out.println("Comparisons: " + mergeQuickComparisons);
         System.out.println();
 
-
         // B4: QUICK SORT
-
-        System.out.println("B4: QUICK SORT ");
+        System.out.println("=== B4: QUICK SORT ===");
         int arr4[] = {17, 5, 23, 8, 14, 3, 11, 20, 6, 9};
         System.out.print("Original: ");
         display(arr4);
+        mergeQuickComparisons = 0;    // Reset counter before sorting
         quickSort(arr4, 0, arr4.length - 1);
         System.out.print("Sorted:   ");
         display(arr4);
+        System.out.println("Comparisons: " + mergeQuickComparisons);
     }
 }

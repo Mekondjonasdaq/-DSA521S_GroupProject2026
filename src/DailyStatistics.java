@@ -23,7 +23,7 @@ public class DailyStatistics {
         double average = (double) totalTime / totalStudents;
         System.out.println("Total students served: " + totalStudents);
         System.out.println("Total service time: " + totalTime + " minutes");
-        System.out.println("Average service time: " + average + " minutes");
+        System.out.printf("Average service time: %.2f minutes%n", average);
         System.out.println("Highest service time: " + highest + " minutes");
         System.out.println("Lowest service time: " + lowest + " minutes");
         System.out.println("Services longer than 10 minutes: " + longerThan10);
